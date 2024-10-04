@@ -10,8 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.11",
     "@astrojs/check": "^0.9.3",
+    "astro": "^4.15.11",
+    "nodemailer": "^6.9.15",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.16"
   }
 }
