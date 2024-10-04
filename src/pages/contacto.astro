@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto">
+	<main>
+		<h1>Contacto</h1>
+		<form id="contact-form">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" name="nombre" required>
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required>
+
+			<label for="mensaje">Mensaje:</label>
+			<textarea id="mensaje" name="mensaje" required></textarea>
+
+			<div class="h-captcha" data-sitekey="15a827a0-57a2-45ae-95c6-80fc2b947454"></div>
+
+			<button type="submit">Enviar</button>
+		</form>
+		<div id="form-status"></div>
+	</main>
+</Layout>
+
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+<script>
+	import { handleSubmit } from '../scripts/contactForm';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.getElementById('contact-form') as HTMLFormElement;
+		const formStatus = document.getElementById('form-status') as HTMLDivElement;
+
+		if (form && formStatus) {
+			form.addEventListener('submit', (e) => handleSubmit(e, form, formStatus));
+		}
+	});
+</script>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	label, input, textarea, button {
+		margin-bottom: 1rem;
+	}
+
+	input, textarea {
+		padding: 0.5rem;
+	}
+
+	button {
+		background-color: var(--color-primary);
+		color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+	}
+
+	#form-status {
+		margin-top: 1rem;
+		font-weight: bold;
+	}
+</style>

@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { frases } from '../data/frases';
+
+const featuredServices = [
+  {
+    title: "Gestión de la información y estrategia de datos",
+    description: "Manejo, organización y limpieza de datos para generar análisis confiables y precisos de sus diferentes líneas de negocio.",
+	link: "/servicios"
+  },
+  {
+    title: "Automatización de procesos operativos",
+    description: "Automatizamos procesos iterativos para redistribuir recursos en áreas que más lo requieran.",
+	link: "/servicios"
+  },
+  {
+    title: "Análisis estadístico del negocio",
+    description: "Diagnóstico interno y externo utilizando programación, estadística multivariada e inteligencia artificial.",
+	link: "/servicios"
+  }
+];
+---
+
+<Layout title="Synapse Consultoria">
+	<div class="hero">
+		<h1>Bienvenido a Synapse Consultoria</h1>
+	</div>
+	<div class="banner">
+		<p id="frase-banner"></p>
+	</div>
+	<main>		
+		<h2>Nuestros Servicios Destacados</h2>
+		<div class="services-grid">
+			{featuredServices.map(service => (
+				<ServiceCard 
+					title={service.title} 
+					description={service.description}
+					link={service.link}
+				/>
+			))}
+		</div>
+	</main>
+</Layout>
+
+<script>
+	import { initBannerRotator } from '../scripts/bannerRotator';
+	import { frases } from '../data/frases';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		initBannerRotator(frases);
+	});	
+</script>
+
+<style>
+	.services-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	  gap: 1rem;
+	  margin-bottom: 2rem;
+	}
+  
+	.btn-primary {
+	  display: inline-block;
+	  background-color: var(--color-primary);
+	  color: white;
+	  padding: 0.5rem 1rem;
+	  text-decoration: none;
+	  border-radius: 4px;
+	  transition: background-color 0.3s ease;
+	}
+  
+	.btn-primary:hover {
+	  background-color: var(--color-secondary);
+	}
+  </style>
+

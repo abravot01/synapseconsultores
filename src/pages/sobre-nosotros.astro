@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TeamMemberCard from '../components/TeamMemberCard.astro';
+
+const teamMembers = [
+  {
+    name: "Victor Augusto Mondragón González",
+    role: "Director Financiero",
+    bio: "Ana tiene más de 10 años de experiencia en análisis de datos y consultoría estratégica. Su experiencia abarca diversos sectores, incluyendo finanzas y tecnología.",
+    imageUrl: "/imagenes/hombre-1.jpg",
+    linkedinUrl: "https://linkedin.com/in/victor-mondragon"
+  },
+  {
+    name: "Sergio Oscar Ramos Ortega",
+    role: "Director Legal",
+    bio: "Carlos es un experto en métodos cuantitativos y modelado estadístico. Ha liderado proyectos de optimización para empresas Fortune 500.",
+    imageUrl: "/imagenes/hombre-2.jpg",
+    linkedinUrl: "https://linkedin.com/in/sergioramosor"
+  },
+  {
+    name: "Diana Paulina Bravo Perez",
+    role: "Director Gestion y analisis de Datos",
+    bio: "Laura combina su experiencia legal con un profundo conocimiento de la gestión de datos, ayudando a los clientes a navegar por los complejos requisitos regulatorios.",
+    imageUrl: "/imagenes/mujer-1.jpg",
+    linkedinUrl: "https://linkedin.com/in/diana-paulina-bravo-perez"
+  }
+];
+---
+
+<Layout title="Sobre Nosotros">
+	<main>
+		<h1>Sobre Nosotros</h1>
+		<section class="about-us">
+			<p>
+				Synapse es una firma especializada en proporcionar soluciones integrales, tanto estratégicas como operativas, a los desafíos y oportunidades que enfrentan nuestros clientes. Nuestro enfoque se centra en el uso avanzado de análisis de datos y métodos cuantitativos para identificar, diagnosticar y resolver problemas complejos en sus operaciones, contribuyendo al crecimiento sostenible y optimización de recursos.
+			</p>
+			<p>
+				A través de un estudio riguroso y personalizado, ayudamos a las organizaciones a anticipar y mitigar riesgos, así como a identificar áreas clave de mejora que pueden impulsar su competitividad.
+			</p>
+			<p>
+				Estamos comprometidos con ser un aliado estratégico en su crecimiento, apoyando la identificación proactiva de oportunidades y la implementación de soluciones innovadoras que fortalezcan su negocio y le permitan alcanzar sus objetivos.
+			</p>
+		</section>
+
+		<h2>Nuestro Equipo</h2>
+		<div class="team-grid">
+			{teamMembers.map(member => (
+				<TeamMemberCard 
+					name={member.name}
+					role={member.role}
+					bio={member.bio}
+					imageUrl={member.imageUrl}
+					linkedinUrl={member.linkedinUrl}
+				/>
+			))}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.about-us {
+		margin-bottom: 2rem;
+	}
+
+	.team-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	h2 {
+		color: var(--color-primary);
+		margin-top: 2rem;
+	}
+</style>

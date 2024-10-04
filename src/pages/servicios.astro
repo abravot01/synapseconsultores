@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: "Gestión de la información y estrategia de datos",
+    description: "Manejo, organización y limpieza de datos con los que dispone la empresa, a fin de poder generar análisis confiables y precisos respecto a sus diferentes líneas de negocio."
+  },
+  {
+    title: "Automatización de procesos operativos",
+    description: "Automatización de procesos iterativos que, dentro del negocio, consumen recursos monetarios, temporales y de capital humano, a fin de redistribuirlos en las áreas que más lo requieran."
+  },
+  {
+    title: "Análisis estadístico descriptivo e inferencial del negocio: Interno",
+    description: "Diagnóstico de ineficiencias en las cadenas de suministro, pérdidas por inestabilidad entre el inventario y la demanda y evaluación del rendimiento de los productos bajo el uso de programación orientada al manejo de datos, a la estadística multivariada y a modelos de inteligencia artificial."
+  },
+  {
+    title: "Análisis estadístico descriptivo e inferencial del negocio: Externo",
+    description: "Evaluación del posicionamiento del negocio con sus competidores inmediatos, competencia de precios, estrategias de marketing y gestión de redes sociales y perfilamiento del cliente potencial bajo el uso de programación orientada al manejo de datos, a la estadística multivariada y a modelos de inteligencia artificial."
+  },
+  {
+    title: "Administración jurídica",
+    description: "Cláusulas de confidencialidad, acuerdos de transparencia en resultados con los clientes, y otros servicios legales relacionados con la gestión de datos y la protección de la información."
+  },
+  {
+    title: "Servicios financieros",
+    description: "Análisis de rentabilidad de estrategias de inversión, gestión de carteras de inversión, proyecciones y presupuestos de la empresa."
+  },
+  {
+    title: "Servicio de auditoría para mitigar el riesgo operativo",
+    description: "Evaluación y mitigación de riesgos operativos en la gestión de datos y procesos empresariales."
+  }
+];
+---
+
+<Layout title="Nuestros Servicios">
+	<main>
+		<h1>Nuestros Servicios</h1>
+		<p>Ofrecemos una amplia gama de servicios especializados en consultoría legal y administración de datos:</p>
+		<div class="services-grid">
+			{services.map(service => (
+				<ServiceCard title={service.title} description={service.description} />
+			))}
+	</main>
+</Layout>
+
+<style>
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
